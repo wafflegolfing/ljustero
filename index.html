@@ -53,11 +53,11 @@
 			</div>
 		<div class="app">
 	      	<div ng-controller="Destination" class="header navbar navbar-absolute-top">
-	      	<a class="fa fa-info iconLeft"  ng-click="toggle('mainSidebar')"></a>
+					<a class="fa fa-exchange iconLeft" ng-if="dest == 'Ljusterö' || dest == 'Östanå'" ng-click="change()"></a>
 	      	<a class="fa fa-gears settings"  ng-click="toggle('mainSidebar')"></a>
 		      	<h2 ng-if="dest == 'Ljusterö' || dest == 'Östanå'">Kommande avgångar mot</h2>
 						<h2 ng-if="dest != 'Ljusterö' && dest != 'Östanå'">&nbsp</h2>
-		      	<h1>&nbsp; {{dest}} &nbsp; <a class="fa fa-exchange" ng-if="dest == 'Ljusterö' || dest == 'Östanå'" ng-click="change()"></a></h1>
+		      	<h1>&nbsp; {{dest}} &nbsp;</h1>
 	  		</div>
 		  <div class="app-body">
 		        <ng-view class="app-content">
