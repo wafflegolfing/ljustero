@@ -1,0 +1,5 @@
+run
+```
+node ferries_create.js
+```
+from this directory with a correct formated ferries_raw.js file

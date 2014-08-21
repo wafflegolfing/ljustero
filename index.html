@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Avgångar färja Ljusterö Östanå</title>
+		<meta charset="utf-8">
+		<meta name="description" content="Kommande avgångar för färja mellan Ljusterö och Östanå. Web app för mobiler (iPhone, iPad, Android)" />
+		<meta name="apple-mobile-web-app-title" content="Ljusterö" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimal-ui" />
+		<link href='http://fonts.googleapis.com/css?family=Lato:300,200' rel='stylesheet' type='text/css' />
+		<link rel="stylesheet" href="bower_components/mobile-angular-ui/dist/css/mobile-angular-ui-hover.min.css" />
+		<link rel="stylesheet" href="bower_components/mobile-angular-ui/dist/css/mobile-angular-ui-base.min.css" />
+		<link rel="stylesheet" href="bower_components/mobile-angular-ui/dist/css/mobile-angular-ui-desktop.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/addtohomescreen.css" />
+		<link rel="stylesheet" href="css/style.css" />
+    <link rel="apple-touch-icon" href="img/icon.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="img/icon-72.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="img/icon@2x.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="img/icon-72@2x.png" />
+		<link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" href="img/splash.png" />
+		<script src="bower_components/moment/moment.js"></script>
+		<script src="bower_components/angular/angular.min.js"></script>
+		<script src="bower_components/angular-route/angular-route.min.js"></script>
+		<script src="bower_components/mobile-angular-ui/dist/js/mobile-angular-ui.min.js"></script>
+		<script src="app/vendor/google_maps.js?v=3.exp"></script>
+		<script src="app/vendor/addtohomescreen.js"></script>
+		<script src="app/vendor/ferryTimeSchedules.js"></script>
+		<script src="app/conf/moment.js"></script>
+		<script src="app/conf/specialDates.js"></script>
+		<script src="app/services/specialDates.js"></script>
+		<script src="app/services/kindOfDay.js"></script>
+		<script src="app/services/getFerries.js"></script>
+		<script src="app/services/geoLocate.js"></script>
+		<script src="app/controllers/mainCtrl.js"></script>
+		<script src="app/controllers/destination.js"></script>
+		<script src="app/controllers/ferries.js"></script>
+		<script src="app/filters/timeFilters.js"></script>
+		<script src="app/services/broadcaster.js"></script>
+		<script src="app/app.js"></script>
+	</head>
+	<body ng-app="farjan" ng-controller="MainCtrl">
+			<div class="sidebar sidebar-right" toggleable parent-active-class="sidebar-right-in" id="mainSidebar">
+			<div class="scrollable">
+			  <div class="scrollable-content">
+					<p style="margin-top:38px;">Denna app bygger på information från Trafikverkets tidtabell och din enhets tid.</p>
+					<p>Tidtabellen som används är den märkt <i>2014-03-21</i>, tipsa gärna om nyare finns tillgänglig.</p>
+					<p>Speciella avgångar som finns i tidtabellen, t ex högsäsong och helgdagar, ska fungera men extrainsatta färjor kan inte visas.</p>
+					<p>Location Services används för att avgöra vilken destination man mest sannolikt vill se när appen startas.</p>
+					<p>Allt användande är på egen risk och ingen garanti över huvud taget kan ges på att det här funkar eller stämmer.</p>
+					<p><a class="fa fa-envelope" ng-href="mailto:{{obfuscated}}@gmail.com"></a> <a class="fa fa-github" ng-href="http://github.com/{{obfuscated}}/{{obfuscated}}.github.io/tree/master/ljustero"></a></p>
+			  </div>
+			</div>
+			</div>
+		<div class="app">
+	      	<div ng-controller="Destination" class="header navbar navbar-absolute-top">
+	      	<a class="fa fa-info iconLeft"  ng-click="toggle('mainSidebar')"></a>
+	      	<a class="fa fa-gears settings"  ng-click="toggle('mainSidebar')"></a>
+		      	<h2>Kommande avgångar mot</h2>
+		      	<h1>&nbsp; {{dest}} &nbsp; <a class="fa fa-exchange" ng-click="change()"></a></h1>
+	  		</div>
+		  <div class="app-body">
+		        <ng-view class="app-content">
+		      		<div ng-controller="Ferries" class="ferries scrollable-content">
+		      			<ul>
+		      				<li ng-repeat="ferry in ferries" ng-if="ferry">
+		      					<a class="fa fa-times-circle removerLeft" ng-if="$index == 0" ng-click=""></a>
+		      					<a class="fa fa-times-circle remover" ng-if="$index == 0" ng-click="remove()"></a>
+		      					<span class="{{ferry | fromNow: $index}}">{{ferry | fromNow}}</span>
+		      					<br />
+		      					{{ferry | getDay}}
+		      				</li>
+		      			</ul>
+	      			</div>
+	      		</div>
+		  		</ng-view>
+		  </div>
+		</div>
+	</body>
+</html>
