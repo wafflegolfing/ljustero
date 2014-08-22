@@ -2,6 +2,7 @@
 angular.module('geoLocateFactory',
 []).factory('geoLocate', function () {
   return function (cb) {
+
     if (!navigator.geolocation) {
         return cb('no geolocate');
     }

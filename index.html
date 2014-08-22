@@ -24,6 +24,7 @@
 		<script src="bower_components/mobile-angular-ui/dist/js/mobile-angular-ui.min.js"></script>
 		<script src="app/vendor/google_maps.js?v=3.exp"></script>
 		<script src="app/vendor/addtohomescreen.js"></script>
+		<script src="app/vendor/spinner.min.js"></script>
 		<script src="app/vendor/ferryTimeSchedules.js"></script>
 		<script src="app/conf/moment.js"></script>
 		<script src="app/conf/specialDates.js"></script>
@@ -39,7 +40,7 @@
 		<script src="app/app.js"></script>
 	</head>
 	<body ng-app="farjan" ng-controller="MainCtrl">
-			<div class="sidebar sidebar-right" toggleable parent-active-class="sidebar-right-in" id="mainSidebar">
+		<div class="sidebar sidebar-right" toggleable parent-active-class="sidebar-right-in" id="mainSidebar">
 			<div class="scrollable">
 			  <div class="scrollable-content">
 					<p style="margin-top:38px;">Denna app bygger på information från Trafikverkets tidtabell och din enhets klocka.</p>
@@ -50,18 +51,20 @@
 					<p><a class="fa fa-envelope" ng-href="mailto:{{obfuscated}}@gmail.com"></a> <a class="fa fa-github" ng-href="http://github.com/{{obfuscated}}/ljustero" target="_blank"></a></p>
 			  </div>
 			</div>
-			</div>
+		</div>
 		<div class="app">
-	      	<div ng-controller="Destination" class="header navbar navbar-absolute-top">
-					<a class="fa fa-exchange iconLeft" ng-if="dest == 'Ljusterö' || dest == 'Östanå'" ng-click="change()"></a>
-	      	<a class="fa fa-gears settings"  ng-click="toggle('mainSidebar')"></a>
-		      	<h2 ng-if="dest == 'Ljusterö' || dest == 'Östanå'">Kommande avgångar mot</h2>
-						<h2 ng-if="dest != 'Ljusterö' && dest != 'Östanå'">&nbsp</h2>
-		      	<h1>{{dest}}</h1>
-	  		</div>
+			<div ng-controller="Destination">
+      	<div  ng-if="dest" class="header navbar navbar-absolute-top">
+					<a class="fa fa-exchange iconLeft" ng-click="change()"></a>
+      		<a class="fa fa-gears settings"  ng-click="toggle('mainSidebar')"></a>
+	      	<h2>Kommande avgångar mot</h2>
+	      	<h1>{{dest}}</h1>
+      	</div>
+  		</div>
 		  <div class="app-body">
 		        <ng-view class="app-content">
 		      		<div ng-controller="Ferries" class="ferries scrollable-content">
+		      				<div ng-if="!ferries" id="spinner"></div>
 		      			<ul>
 		      				<li ng-repeat="ferry in ferries" ng-if="ferry">
 		      					<a class="fa fa-times-circle removerLeft" ng-if="$index == 0" ng-click=""></a>
@@ -76,5 +79,6 @@
 		  		</ng-view>
 		  </div>
 		</div>
+		<script src="app/conf/spinner.js"></script>
 	</body>
 </html>
