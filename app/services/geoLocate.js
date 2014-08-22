@@ -2,9 +2,14 @@
 angular.module('geoLocateFactory',
 []).factory('geoLocate', function () {
   return function (cb) {
+
     if (!navigator.geolocation) {
         return cb('no geolocate');
     }
+    if (navigator.userAgent && navigator.userAgent.toLowerCase().indexOf('firefox') !== -1) {
+        return cb('firefox');
+    }
+
     navigator.geolocation.getCurrentPosition(function (pos) {
       var latitude, longitude, geocoder, latlng;
 
