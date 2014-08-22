@@ -12,7 +12,8 @@ body, .app, .navbar {
 	position: sticky;
 }
 .app-body {
-	background: linear-gradient(45deg, #111111 0%, #333333 100%) repeat scroll 0% 0%;
+	background:#333;
+	background: linear-gradient(45deg, #222222 0%, #444444 100%) repeat scroll 0% 0%;
 }
 h1 {
 	font-size:20px;
