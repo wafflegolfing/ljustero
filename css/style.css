@@ -13,8 +13,6 @@ body, .app, .navbar {
 }
 .app-body {
 	background: linear-gradient(45deg, #111111 0%, #333333 100%) repeat scroll 0% 0%;
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#111111), color-stop(50%,#fea026), color-stop(51%,#ff8b00), color-stop(100%,#ff7701)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top,  #111111 0%,#fea026 50%,#111111 51%,#333333 100%); /* Chrome10+,Safari5.1+ */
 }
 h1 {
 	font-size:20px;
