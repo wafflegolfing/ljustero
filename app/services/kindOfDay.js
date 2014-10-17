@@ -11,10 +11,9 @@ angular.module('kindOfDayFactory', [
 		}
 		//today = moment('2014-12-29', 'YYYY-MM-DD');
 		var isA = specialDates.isItA(today);
-		var isB = specialDates.isItB(today);
 		var isC = specialDates.isItC(today);
 		var isD = specialDates.isItD(today);
-		var isE = specialDates.isA;
+		var isE = specialDates.isItE(today);
 		var specialDate = specialDates.isSpecialDate(today);
 		var output;
 		weekday = today.format('d');
@@ -35,7 +34,7 @@ angular.module('kindOfDayFactory', [
 				type = 'wkd';
 			}
 		}
-		output = { date: today, type: type, A: isA, B: isB, C: isC, D: isD, E: isE };
+		output = { date: today, type: type, A: isA, C: isC, D: isD, E: isE };
 		/*
 		console.log('datum', today.format('YYYY-MM-DD'));
 		console.log('veckodag', today.format('dddd'));

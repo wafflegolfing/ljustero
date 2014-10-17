@@ -19,17 +19,10 @@ angular.module('specialDatesFactory',
 			}
 			return false;
 		},
-		isItB: function (d) {
-			var w = moment(d).isoWeek();
-			if (w > 11 && w < 45) {
-				return true;
-			}
-			return false;
-		},
 		isItC: function (d) {
 			var day = moment(d).day();
 			var w = moment(d).isoWeek();
-			if (day === 6 && w > 11 && w < 45) {
+			if (w > 11 && w < 45  && (day === 5 || day === 6)) {
 				return true;
 			}
 			return false;
@@ -38,6 +31,14 @@ angular.module('specialDatesFactory',
 			var day = moment(d).day();
 			var w = moment(d).isoWeek();
 			if (w > 11 && w < 45 && (day === 0 || this.isSpecialDate(d, true)) ) {
+				return true;
+			}
+			return false;
+		},
+		isItE: function (d) {
+			var day = moment(d).day();
+			var m = moment(d).format('M');
+			if ((m === '6' || m === '7' || m === '8') && (day === 5)) {
 				return true;
 			}
 			return false;
