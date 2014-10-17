@@ -4,4 +4,4 @@ http://wafflegolfing.github.io/ljustero/
 
 Appen bygger på information från Trafikverkets tidtabell och din enhets klocka.
 
-Tidtabellen som används är den märkt *2014-03-21*, tipsa gärna om nyare finns tillgänglig.
+Tidtabellen som används är den märkt *2014-09-01*, tipsa gärna om nyare finns tillgänglig.
